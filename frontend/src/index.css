@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Ubuntu&family=Varela+Round&display=swap');
+@import "tailwindcss";
+
+*{
+    font-family: "Outfit", sans-serif;
+}
+body{
+    min-height: 90vh;
+}
+a{
+    text-decoration: none;
+    color:inherit;
+}
+.active {
+    padding-bottom: 2px;
+    border-bottom:2px solid #49557e ;
+    transition: all 0.15s ease-in-out;
+  }

@@ -3,6 +3,7 @@
 
 *{
     font-family: "Outfit", sans-serif;
+   
 }
 body{
     min-height: 90vh;
@@ -11,8 +12,22 @@ a{
     text-decoration: none;
     color:inherit;
 }
-.active {
+.navitems .active {
     padding-bottom: 2px;
-    border-bottom:2px solid #49557e ;
+    border-bottom:2px solid tomato ;
     transition: all 0.15s ease-in-out;
   }
+#hi{
+    animation: fade-in 1s ease-in-out;
+}  
+
+@keyframes fade-in {
+    0%{
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100%{
+        opacity: 1;
+        transform: ttranslateY(0);
+    }
+}

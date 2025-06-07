@@ -14,7 +14,7 @@ const Menu = ({category,setCategory}) => {
   <div className=' flex flex-row justify-between gap-[30px] mx-[10px]'  >
     {menu_list.map((item,index)=>(
       <div key={index} onClick={()=>setCategory(prev=>prev===item.menu_name?"All" : item.menu_name)}>
-        <img src={item.menu_image} className= {category===item.menu_name?"active" : ""} alt={item.menu_name} />
+        <img src={item.menu_image} className={`menu-img${category===item.menu_name ? ' active' : ''}`} alt={item.menu_name} />
         <p className='ml-[32px] mt-[10px] mb-[20px] text-xl text-gray-600 cursor-pointer '>{item.menu_name}</p>
 
       </div>

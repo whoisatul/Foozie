@@ -2,21 +2,23 @@ import React, { useState } from 'react'
 import '../index.css'
 import { assets } from '../assets/assets'
 import { Divide } from 'lucide-react'
+import { StoreContext } from '../context/StoreContext'
+import { useContext } from 'react'
 
 const Fooditem = ({id,name,price,description,image}) => {
   
-   const[itemcount,setitemcount] = useState(0)
+   const{cartItems, addToCart, removeFromCart} = useContext(StoreContext);
 
   return (
-    <div className='mx-[20px] my-[20px] bg-white rounded-lg shadow p-2'>
+    <div className='mx-[20px] my-[20px] bg-white rounded-lg shadow p-2 transition-transform duration-300 hover:scale-105'>
     <div>
       <img src={image} alt="" className='rounded-2xl mb-[5px] ' />
       {
-        !itemcount ? <img src={assets.add_icon_white} alt="" onClick={()=>setitemcount(prev=>prev+1)} />
+        !cartItems[id] ? <img src={assets.add_icon_white} alt="" onClick={()=>addToCart(id)} />
         : <div className='flex flex-row justify-between bg-gray-200 rounded-2xl w-[100px]'>
-          <img onClick={()=>setitemcount(prev=>prev-1)} src={assets.remove_icon_red} alt="" className='px-[3px] py-[3px]'/>
-          <p className='mx-[3px] mt-[6px]'>{itemcount}</p>
-          <img onClick={()=>setitemcount(prev=>prev+1)} src={assets.add_icon_green} alt="" className='px-[3px] py-[3px] '/>
+          <img onClick={()=>removeFromCart(id)} src={assets.remove_icon_red} alt="" className='px-[3px] py-[3px]'/>
+          <p className='mx-[3px] mt-[6px]'>{cartItems[id]}</p>
+          <img onClick={()=>addToCart(id)} src={assets.add_icon_green} alt="" className='px-[3px] py-[3px] '/>
         </div>
       }
     </div>

@@ -9,7 +9,7 @@ const Navbar = () => {
   return (
     <div className="flex justify-between items-center px-5 mt-6 text-base absolute top-0 left-0 w-full z-10 bg-transparent">
   <div className="flex items-center h-full">
-    <div className="font-semibold text-white">logo</div>
+    <div className="font-semibold text-white text-2xl">logo</div>
   </div>
 
   <div className='navitems'>

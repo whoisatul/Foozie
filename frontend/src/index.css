@@ -3,6 +3,7 @@
 
 *{
     font-family: "Outfit", sans-serif;
+    scroll-behavior: smooth;
    
 }
 body{
@@ -28,6 +29,12 @@ a{
     }
     100%{
         opacity: 1;
-        transform: ttranslateY(0);
+        transform: translateY(0);
     }
+}
+
+.menu-img.active {
+  border: 3px solid tomato;
+  border-radius: 50%;
+  padding: 2px;
 }

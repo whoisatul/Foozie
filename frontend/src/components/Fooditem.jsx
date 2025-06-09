@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import '../index.css'
 import { assets } from '../assets/assets'
-import { Divide } from 'lucide-react'
 import { StoreContext } from '../context/StoreContext'
 import { useContext } from 'react'
 

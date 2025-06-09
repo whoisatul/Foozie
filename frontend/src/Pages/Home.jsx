@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from '../components/Header'
-import Menu from './Menu'
+import Suggestion from './suggestion'
 import Fooddisplay from '../components/foodDisplay'
 import { useState } from 'react'
 import Footer from '../components/Footer'
@@ -13,7 +13,7 @@ const Home = () => {
   return (
     <div>
       <Header/>
-      <Menu category={category} setCategory={setCategory}/>
+      <Suggestion category={category} setCategory={setCategory}/>
       <Fooddisplay category={category}/>
       <Download/>
       <Footer/>

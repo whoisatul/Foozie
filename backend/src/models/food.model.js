@@ -2,8 +2,12 @@ import mongoose,{Schema} from "mongoose";
 
 const foodSchema = new Schema({
     username:{
-        type:String,
-        required:true
+            type: String,
+            required: true,
+            unique: true,
+            lowercase: true,
+            trim: true, 
+            index: true
     },
     description:{
         type:String,
@@ -14,7 +18,7 @@ const foodSchema = new Schema({
         required:true
     },
     image:{
-        type:String,
+        type:String, //cloudinary url
         required:true
     },
     category:{

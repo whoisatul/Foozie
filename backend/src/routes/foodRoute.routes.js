@@ -1,12 +1,13 @@
 import express from "express"
-import { addFood } from "../controllers/foodcon.controller.js"
-import multer from "multer"
+import { addFood,listfood,removeitem } from "../controllers/foodcon.controller.js"
 import { upload } from "../middlewares/multer.middleware.js";
 import { Router } from "express";
 
-const router = Router();
+const router = express.Router();
 
-router.route("/add",upload.single("image") ,addFood)
+router.route("/add").post(upload.single("image"),addFood)
+router.route("/list").get(listfood)
+router.route("/remove").post(removeitem)
 
 
 

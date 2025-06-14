@@ -15,11 +15,10 @@ app.use(express.static("public"))
 app.use(cookieParser())
 
 //routes import
-import foodrouter from './routes/foodRoute.routes.js'
+import foodrouter from "./routes/foodRoute.routes.js"
 
 //routes declaration
-
-app.use("api/v1/addfood",foodrouter)
+app.use("/api/v1/food",foodrouter)
 
 // http://localhost:8000/api/v1/users/register
 

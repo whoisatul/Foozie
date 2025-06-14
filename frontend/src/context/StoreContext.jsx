@@ -1,7 +1,6 @@
 import { createContext } from "react";
 import { food_list } from "../assets/assets";
 import { useState } from "react";
-import { useEffect } from "react";
 
 
 

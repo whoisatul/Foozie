@@ -3,7 +3,7 @@ import { addFood,listfood,removeitem } from "../controllers/foodcon.controller.j
 import { upload } from "../middlewares/multer.middleware.js";
 import { Router } from "express";
 
-const router = express.Router();
+const router = Router();
 
 router.route("/add").post(upload.single("image"),addFood)
 router.route("/list").get(listfood)

@@ -4,10 +4,6 @@ const foodSchema = new Schema({
     name:{
             type: String,
             required: true,
-            unique: true,
-            lowercase: true,
-            trim: true, 
-            index: true
     },
     description:{
         type:String,

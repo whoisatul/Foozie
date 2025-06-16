@@ -1,18 +1,36 @@
 import { foodModel } from "../models/food.model.js";
 import fs from 'fs'
 import path from "path";
+import { uploadOnCloudinary } from "../utils/cloudinary.utils.js";
 
 // add food
 const addFood = async (req,res) => {
-   let image_filename = `${req.file.filename}`
+
+  if (!req.file) {
+    return res.status(400).json({
+      success: false,
+      message: "Image file is required",
+    });
+  }
+   
+  const cloudinaryres = await uploadOnCloudinary(req.file.path);
+  
+  if (!cloudinaryres) {
+    return res.status(500).json({
+      success: false,
+      message: "Failed to upload image to Cloudinary",
+    });
+  }
+
 
    const food = new foodModel({
     name:req.body.name,
     description:req.body.description,
     price:req.body.price,
     category:req.body.category,
-    image: image_filename
+    image: cloudinaryres.secure_url
    })
+   
    try {
     await food.save();
     res.json({

@@ -6,6 +6,7 @@ import Add from './pages/Add'
 import List from './pages/List'
 import Order from './pages/Order'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
     {
       path:'/add',
       element: <div>
+        <ToastContainer />
         <Navbar />
         <hr />
        <div className='flex'>

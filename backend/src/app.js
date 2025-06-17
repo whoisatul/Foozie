@@ -16,9 +16,11 @@ app.use(cookieParser())
 
 //routes import
 import foodrouter from "./routes/foodRoute.routes.js"
+import userrouter from "./routes/userRoute.route.js"
 
 //routes declaration
 app.use("/api/v1/food",foodrouter)
+app.use("/api/v1/user",userrouter)
 
 // http://localhost:8000/api/v1/users/register
 

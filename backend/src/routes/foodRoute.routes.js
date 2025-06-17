@@ -1,4 +1,3 @@
-import express from "express"
 import { addFood,listfood,removeitem } from "../controllers/foodcon.controller.js"
 import { upload } from "../middlewares/multer.middleware.js";
 import { Router } from "express";

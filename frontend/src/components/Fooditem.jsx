@@ -6,7 +6,7 @@ import { useContext } from 'react'
 
 const Fooditem = ({id,name,price,description,image}) => {
   
-   const{cartItems, addToCart, removeFromCart} = useContext(StoreContext);
+   const{cartItems = {}, addToCart, removeFromCart} = useContext(StoreContext);
 
   return (
     <div className='mx-[20px] my-[20px] bg-white rounded-lg shadow p-2 transition-transform duration-300 hover:scale-105'>

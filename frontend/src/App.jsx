@@ -23,7 +23,7 @@ const App = () => {
       ),
     },
     { path: '/cart', element: <div><Navbar cartMode={true} setShowLogin={setShowLogin}  /><Cart /><Footer/></div> },
-    { path: '/order', element: <><PlaceOrder /><Footer/></> },
+    { path: '/order', element: <><Navbar cartMode={true} /><PlaceOrder /><Footer/></> },
     { path: '/menu', element: <div><Navbar setShowLogin={setShowLogin} /><Menu /></div> }
   ]);
 

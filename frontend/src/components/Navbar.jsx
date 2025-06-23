@@ -43,27 +43,30 @@ const Navbar = ({ setShowLogin, cartMode }) => {
             </span>
           )}
         </NavLink>
-        {!accesstoken?<button className={`bg-transparent border border-[tomato] text-base px-[20px] py-[6px] rounded-full cursor-pointer transition duration-300 ease-in-out hover:bg-[tomato] hover:text-white ${cartMode ? 'text-black' : 'text-gray-200'}`} onClick={() => setShowLogin(true)}>
-          sign in
-        </button> : <div className="relative group">
-  <img
-    src={assets.profile_icon}
-    alt="Profile"
-    className="w-9 h-9 rounded-full border-2 border-[tomato] bg-white p-1 cursor-pointer transition-transform duration-200 group-hover:scale-110"
-  />
-  <ul className="absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-opacity duration-200 z-50">
-    <li className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 cursor-pointer">
-      <img src={assets.bag_icon} className="w-5 h-5" alt="Orders" />
-      <p className='text-black'>Orders</p>
-    </li>
-    <hr className="my-1" />
-    <li className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 cursor-pointer">
-      <img src={assets.logout_icon} className="w-5 h-5" alt="Logout" />
-      <p className='text-black' onClick={logout} >Logout</p>
-    </li>
-  </ul>
-</div> }
-        
+        {!accesstoken ? (
+          <button className={`bg-transparent border border-[tomato] text-base px-[20px] py-[6px] rounded-full cursor-pointer transition duration-300 ease-in-out hover:bg-[tomato] hover:text-white ${cartMode ? 'text-black' : 'text-gray-200'}`} onClick={() => setShowLogin(true)}>
+            sign in
+          </button>
+        ) : (
+          <div className="relative group">
+            <img
+              src={assets.profile_icon}
+              alt="Profile"
+              className="w-9 h-9 rounded-full border-2 border-[tomato] bg-white p-1 cursor-pointer transition-transform duration-200 group-hover:scale-100"
+            />
+            <ul className="absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible pointer-events-auto transition-all duration-200 z-50">
+              <NavLink to='/myorder' className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 rounded-lg cursor-pointer">
+                <img src={assets.bag_icon} className="w-5 h-5" alt="Orders" />
+                <p className='text-black'>Orders</p>
+              </NavLink>
+              <hr className="my-1" />
+              <li className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 rounded-lg cursor-pointer">
+                <img src={assets.logout_icon} className="w-5 h-5" alt="Logout" />
+                <p className='text-black' onClick={logout} >Logout</p>
+              </li>
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -5,7 +5,12 @@ import Razorpay from "razorpay";
 const placeorder = async (req, res) => {
   try {
     const userId = req.user._id;
-    const { items, amount, address } = req.body;
+    const { items, amount, address, payment, razorpay_payment_id, razorpay_order_id, razorpay_signature } = req.body;
+
+    // Only create order if payment is true
+    if (!payment) {
+      return res.status(400).json({ success: false, message: "Payment not confirmed" });
+    }
 
     // 1. Create a new order document in your database
     const newOrder = new orderModel({
@@ -13,6 +18,10 @@ const placeorder = async (req, res) => {
       items,
       amount,
       address,
+      payment: true,
+      razorpay_payment_id,
+      razorpay_order_id,
+      razorpay_signature // set payment to true
     });
     await newOrder.save();
 
@@ -43,4 +52,40 @@ const placeorder = async (req, res) => {
   }
 };
 
-export { placeorder };
+const userOrder = async(req,res) => {
+
+  try {
+    const userId = req.user._id;
+    const order = await orderModel.find({ userId });
+    res.json({ success:true, data:order })
+  } catch (error) {
+    console.log(error)
+    res.json({ success:false, message: "user order error"})
+  }
+}
+
+const listorder = async(req,res) => {
+
+  try {
+    const orders = await orderModel.find({});
+    res.json({success:true,data:orders});
+  } catch (error) {
+    console.log(error)
+    res.json({success:false,message:"list not fetched"})
+  }
+
+}
+
+const updatestatus = async(req,res) => {
+
+  try {
+    await orderModel.findByIdAndUpdate(req.body.orderId, {status:req.body.status})
+    res.json ({success: true,message:"Status Updated" })
+  } catch (error) {
+    console.log(error)
+    res.json({success:false,message:"status not updated"})
+  }
+
+}
+
+export { placeorder,userOrder,listorder,updatestatus };

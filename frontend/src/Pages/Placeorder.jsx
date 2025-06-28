@@ -2,12 +2,13 @@ import React, { useContext, useState } from 'react';
 import { StoreContext } from '../context/StoreContext';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios"
+import Orderdone from './Orderdone'
 
 const PlaceOrder = () => {
   const { getTotal, accesstoken, cartItems } = useContext(StoreContext);
   const url = "http://localhost:8000";
   const navigate = useNavigate();
-
+  const [orderPlaced, setOrderPlaced] = useState(false);
   const [form, setForm] = useState({
     firstName: '',
     lastName: '',
@@ -49,7 +50,10 @@ const PlaceOrder = () => {
             }
           });
           alert("Payment successful!");
-          navigate("/myorder");
+          setOrderPlaced(true);
+          setTimeout(() => {
+            navigate('/myorder');
+          }, 1500);
         } catch (err) {
           alert("Order creation failed after payment!");
           console.error(err);
@@ -107,6 +111,7 @@ const PlaceOrder = () => {
               <span>Total</span>
               <span>${getTotal ? getTotal() + 2 : 2}</span>
             </div>
+            {orderPlaced && <Orderdone />}
             <button className="bg-[tomato] text-white font-semibold w-full py-3 rounded hover:bg-[#e5532d] transition-all" onClick={handleProceedToPayment}>
               PROCEED TO PAYMENT
             </button>

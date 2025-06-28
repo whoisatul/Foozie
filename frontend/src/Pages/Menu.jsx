@@ -1,8 +1,17 @@
-import React from 'react'
+import React,{useState} from 'react'
+import Suggestion from './suggestion'
+import Fooddisplay from '../components/foodDisplay'
+import Footer from '../components/Footer'
 
 const Menu = () => {
+
+  const [category, setCategory] = useState("All");
   return (
-    <div>Menu</div>
+    <div>
+       <Suggestion category={category} setCategory={setCategory}/>
+       <Fooddisplay category={category}/>
+       <Footer />
+    </div>
   )
 }
 

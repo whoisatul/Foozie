@@ -1,16 +1,30 @@
-import React from 'react'
+import React from 'react';
 import '../index.css';
+import { NavLink,useNavigate } from 'react-router-dom';
 
 const Header = () => {
-  return (
-    <div className="bg-[url('/bg.jpg')] bg-cover bg-center h-screen ">
-        <div className='flex flex-col'>
-            <h2 id='hi' className='text-white font-extrabold text-7xl flex flex-col pt-[200px] pl-[75px] mb-[20px] animate-fade-in'>Order your <br />favourite food here</h2>
-            <p className='text-white w-1/2 pl-[75px] mb-[20px]'>Choose from a diverse menu featuring a delectable array of dishes crafted with the finest ingredients and culinary expertise. Our mission is to satisfy your cravings and elevate your dining experience, our delicious meal at a time.</p>
-            <button className='bg-white w-1/12 ml-[75px] mt-5 px-3 py-3 rounded-4xl'>View Menu</button>       
-        </div>
-    </div>
-  )
-}
 
-export default Header
+  const navigate = useNavigate();
+  return (
+    <div className="relative bg-[url('/bg.png')] bg-cover bg-center h-screen">
+      {/* Dim black overlay */}
+      <div className="absolute inset-0 bg-black opacity-30 z-10 pointer-events-none"></div>
+      {/* Text content */}
+      <div className="relative z-30 flex flex-col">
+        <div className = 'headline text-6xl flex flex-col pt-[250px] pl-[75px] mb-[23px] leading-14 fade-in' style={ { color: '#FAF3E0' } }  >
+         <div>Craving something amazing?</div>
+         <div><span className='text-[#FAE17F]'>Foozie's</span> got you covered.</div>
+       </div>
+        <p className=" w-1/2 pl-[75px] mb-[20px] text-[17px]" style={ { color: '#FAF3E0' } }>
+        From sizzling street-style snacks to comfort-packed meals, Foozie brings your favorite flavors right to your doorstep — fast, fresh, and full of joy.
+        <br />Your next bite is just a tap away.
+        </p>
+        <button onClick={()=>navigate('/menu')} className="bg-transparent w-fit ml-[75px] mt-2 px-4 py-3 rounded-4xl text-gray-300 border border-[#F3E5AB] transition duration-200 hover:shadow-[0_0_10px_#F3E5AB]">
+        View menu
+       </button>
+      </div>
+    </div>
+  );
+};
+
+export default Header;

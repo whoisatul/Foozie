@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './index.css'
-import Navbar from './components/Navbar'
 import Sidebar from './components/Sidebar'
+import Home from './pages/Home'
 import Add from './pages/Add'
 import List from './pages/List'
 import Order from './pages/Order'
@@ -14,22 +14,19 @@ function App() {
     {
       path: '/',
       element:
-        <div>
-          <Navbar />
-          <hr />
-          <Sidebar />
-      
-        </div>
+        <div >
+          <div className='flex'>
+            <Sidebar/>
+           <Home /></div>
+          </div>
       
     },
     {
       path:'/add',
-      element: <div>
+      element: <div >
         <ToastContainer />
-        <Navbar />
-        <hr />
-       <div className='flex'>
-       <Sidebar />
+       <div className='flex '>
+       <Sidebar/>
        <Add />
        </div>
         
@@ -37,21 +34,16 @@ function App() {
     },{
       path:'/list',
       element: <div>
-        <Navbar />
-        <hr />
         <div className='flex'>
-       <Sidebar />
+        <Sidebar/>
        <List/>
        </div>
-        
       </div>
     },{
       path:'/order',
-      element: <div>
-        <Navbar />
-        <hr />
+      element: <div >
         <div className='flex'>
-       <Sidebar />
+        <Sidebar/>
        <Order />
        </div>
         

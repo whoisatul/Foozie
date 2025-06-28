@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import '../index.css';
 import { assets } from '../assets/assets';
+import { Upload } from 'lucide-react';
+import Sidebar from '../components/Sidebar';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
@@ -63,18 +65,14 @@ const Add = () => {
   };
 
   return (
-    <div className="p-8 w-1/2 ml-[200px]">
-      <form className="max-w-xl mx-auto bg-white p-6" onSubmit={onSubmitHandler}>
+    <div className="px-6 flex mt-[120px] w-[70%] ml-[38px] mr-[30px] rounded-2xl h-[82.5vh] z-20 shadow-[0_0_1px_rgba(62,39,35,0.15),0_6px_12px_rgba(62,39,35,0.25)] ">
+      <form className="max-w-xl mx-auto mt-8 bg-white p-6 " onSubmit={onSubmitHandler}>
         {/* Upload Section */}
         <div className="mb-6">
-          <h1 className="text-lg font-semibold mb-2">Upload Image</h1>
+          <h1 className="text-lg font-semibold mb-2 text-[#3E2723]">Upload Image</h1>
           <label htmlFor="image" className="block cursor-pointer border border-dashed border-gray-400 p-4 text-center">
-            <img
-              src={image ? URL.createObjectURL(image) : assets.upload_area}
-              alt="Upload"
-              className="w-20 h-18 mx-auto mb-2 mt-[10px]"
-            />
-            <span className="text-gray-500">Choose File</span>
+            <Upload className='ml-[170px] mb-[7px] mt-[5px] text-[#3E2723]'/>
+            <span className=" text-[#3E2723]">Choose File</span>
             <input
               onChange={(e) => setImage(e.target.files[0])}
               type="file"
@@ -86,37 +84,37 @@ const Add = () => {
         </div>
 
         <div className="mb-4">
-          <label className="block font-medium mb-1">Product Name</label>
+          <label className="block font-medium mb-1 text-[#3E2723]">Food Name</label>
           <input
             onChange={onChangeHandler}
             name="name"
             value={data.name}
             type="text"
             placeholder="Type here"
-            className="w-full border px-3 py-2"
+            className="w-full border border-[#3E2723] px-3 py-2 focus:outline-none focus:shadow-[0_0_6px_1px_rgba(62,39,35,0.35)] transition-all duration-300"
           />
         </div>
 
         <div className="mb-4">
-          <label className="block font-medium mb-1">Product Description</label>
+          <label className="block font-medium mb-1 text-[#3E2723]">Food Description</label>
           <textarea
             onChange={onChangeHandler}
             name="description"
             value={data.description}
             placeholder="Write content here"
             rows="4"
-            className="w-full border px-3 py-2"
+            className="w-full border border-[#3E2723] px-3 py-2 focus:outline-none focus:shadow-[0_0_6px_1px_rgba(62,39,35,0.35)] transition-all duration-300"
           ></textarea>
         </div>
 
         <div className="flex gap-4 mb-6">
           <div className="w-1/2">
-            <label className="block font-medium mb-1">Product Category</label>
+            <label className="block font-medium mb-1 text-[#3E2723]"> Category</label>
             <select
               onChange={onChangeHandler}
               name="category"
               value={data.category}
-              className="appearance-none w-full border-1 px-4 py-2 pr-10 bg-white text-gray-700"
+              className="appearance-none w-full px-4 py-2 pr-10 bg-white border border-[#3E2723] text-gray-700 focus:outline-none focus:shadow-[0_0_6px_1px_rgba(62,39,35,0.35)] transition-all duration-300"
             >
               <option>Salad</option>
               <option>Rolls</option>
@@ -130,14 +128,14 @@ const Add = () => {
           </div>
 
           <div className="w-1/2">
-            <label className="block font-medium mb-1">Product Price</label>
+            <label className="block font-medium mb-1 text-[#3E2723]"> Price</label>
             <input
               onChange={onChangeHandler}
               name="price"
               value={data.price}
               type="text"
               placeholder="₹20"
-              className="w-full border px-3 py-2"
+              className="w-full border border-[#3E2723] px-3 py-2 focus:outline-none focus:shadow-[0_0_6px_1px_rgba(62,39,35,0.35)] transition-all duration-300"
             />
           </div>
         </div>
@@ -145,7 +143,7 @@ const Add = () => {
         {/* Submit Button */}
         <button
           type="submit"
-          className="w-full bg-gray-500 text-white py-2 hover:bg-black transition"
+          className="w-full bg-[#3E2723] text-white py-2 hover:bg-[#a38b78] transition-all duration-300"
         >
           ADD
         </button>

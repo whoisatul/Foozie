@@ -2,10 +2,56 @@ import React from 'react'
 
 const Orderdone = () => {
   return (
-    <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
-      <div className="bg-white p-6 rounded-xl shadow-xl text-center text-xl font-medium">
-        🎉 Your order has been placed!
+    <div className="fixed inset-0 flex items-center justify-center min-h-screen">
+      {/* Glassmorphism card */}
+      <div className="relative z-20 flex flex-col items-center justify-center w-[370px] p-8 rounded-2xl bg-white/10 backdrop-blur-lg border border-white/20 shadow-2xl animate-fade-in">
+        {/* Animated checkmark */}
+        <div className="mb-6">
+          <svg className="w-20 h-20 text-green-400 animate-pop-in" viewBox="0 0 52 52">
+            <circle className="stroke-current text-green-200" cx="26" cy="26" r="25" fill="none" strokeWidth="3" />
+            <path className="stroke-current text-green-500 animate-draw-check" fill="none" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" d="M14 27l7 7 16-16" />
+          </svg>
+        </div>
+        {/* Thank you message */}
+        <h2 className="text-2xl font-bold text-white mb-2 animate-fade-in-up">Thank you for your order!</h2>
+        <p className="text-white/80 mb-6 text-center animate-fade-in-up delay-150">Your order was placed successfully. We appreciate your business and hope you enjoy your meal!</p>
+        {/* Order summary placeholder */}
+        <div className="w-full mb-6 animate-fade-in-up delay-300">
+          <div className="bg-white/10 border border-white/10 rounded-lg p-4 text-white/80 text-sm text-center">
+            <span className="font-semibold text-white">Order #123456</span> <br />
+            Estimated delivery: <span className="font-semibold text-white">30-40 min</span>
+          </div>
+        </div>
+        {/* Button */}
+        <a href="/" className="inline-block px-8 py-3 rounded-full bg-gradient-to-r from-[#3e2723] to-[#5d4037] text-white font-semibold shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300 animate-fade-in-up delay-500">Go to Home</a>
       </div>
+      {/* Animations */}
+      <style>{`
+        @keyframes pop-in {
+          0% { transform: scale(0.5); opacity: 0; }
+          80% { transform: scale(1.1); opacity: 1; }
+          100% { transform: scale(1); opacity: 1; }
+        }
+        .animate-pop-in { animation: pop-in 0.7s cubic-bezier(.68,-0.55,.27,1.55) both; }
+        @keyframes draw-check {
+          0% { stroke-dasharray: 0, 50; }
+          100% { stroke-dasharray: 50, 0; }
+        }
+        /* Slower checkmark animation */
+        .animate-draw-check {
+          stroke-dasharray: 50, 0;
+          stroke-dashoffset: 0;
+          animation: draw-check 2.2s 0.2s cubic-bezier(.68,-0.55,.27,1.55) both;
+        }
+        @keyframes fade-in-up {
+          0% { opacity: 0; transform: translateY(30px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up { animation: fade-in-up 0.7s both; }
+        .delay-150 { animation-delay: 0.15s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-500 { animation-delay: 0.5s; }
+      `}</style>
     </div>
   )
 }

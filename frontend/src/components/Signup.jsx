@@ -1,5 +1,6 @@
 import React, { useState,useContext } from 'react'
 import { assets } from '../assets/assets'
+import { X } from 'lucide-react'
 import axios from 'axios';
 import { StoreContext } from '../context/StoreContext';
 
@@ -9,7 +10,7 @@ const Signup = ({ setShowLogin }) => {
 
   const{setaccesstoken} = useContext(StoreContext)
 
-  const [currState, setCurrState] = useState('signup')
+  const [currState, setCurrState] = useState('')
   const [data,setData] = useState({
     name:"",
     email:"",
@@ -47,55 +48,98 @@ const Signup = ({ setShowLogin }) => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50">
-  <div className="absolute inset-0 bg-black opacity-50"></div>
+      <div className="absolute inset-0 bg-black opacity-50"></div>
 
-  <form className="bg-white rounded-xl shadow-lg w-full max-w-sm p-8 relative z-10 animate-fade-in" onSubmit={onSubmitHandler}>
-    <div className="flex flex-col items-center">
-      <h2 className="text-2xl font-bold mb-2 capitalize">{currState === 'signup' ? 'Sign Up' : 'Login'}</h2>
-      <button type="button" className="absolute top-4 right-4 cursor-pointer" onClick={() => setShowLogin(false)}>
-        <img src={assets.cross_icon} alt="close" className="w-4 h-4 mt-[2px] mr-[2px]" />
-      </button>
-      <div className="w-full flex flex-col gap-4 mt-4">
-        {currState === 'signup' && (
-          <input type="text" name='name' value= {data.name} onChange={onChangeHandler} placeholder="Your name" className="border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-tomato" />
-        )}
-        <input type="email" name='email' value= {data.email} onChange={onChangeHandler} placeholder="Your email" className="border rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-tomato" />
-        <input type="password" name='password' value= {data.password} onChange={onChangeHandler} placeholder="Password" className="border rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-tomato" />
-        <button type="submit" className="bg-[tomato] text-white font-semibold rounded-md py-2 mt-2 hover:bg-[#e5532d] transition-all">
-          {currState === 'signup' ? 'Create account' : 'Login'}
-        </button>
-        <div className="flex items-center gap-2 mt-2">
-          <input type="checkbox" required className="accent-[#ff5133]" />
-          <span className="text-xs text-gray-600">By continuing, I agree to the terms of use & privacy policy.</span>
+      {/* Glassmorphism effect on the form only */}
+      <form className="bg-white/10 backdrop-blur-md border border-white/30 shadow-lg rounded-xl w-[350px] p-6 relative z-10 animate-fade-in" onSubmit={onSubmitHandler}>
+        <div className="flex flex-col items-center">
+          <h2 className="text-2xl font-bold mb-4 text-white capitalize tracking-wide">
+            {currState === 'signup' ? 'Sign Up' : 'Login'}
+          </h2>
+          
+          <button 
+            type="button" 
+            className="absolute top-4 right-4 scale-130 text-gray-400 cursor-pointer p-2 hover:text-white transition-all duration-200 " 
+            onClick={() => setShowLogin(false)}
+          >
+            <X alt="close" className="w-4 h-4 " />
+          </button>
+          
+          <div className="w-full flex flex-col gap-5 mt-4">
+            {currState === 'signup' && (
+              <div className="relative">
+                <input 
+                  type="text" 
+                  name='name' 
+                  value={data.name} 
+                  onChange={onChangeHandler} 
+                  placeholder="Your name" 
+                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/70 focus:outline-none focus:ring-1 focus:ring-white/50 focus:border-transparent backdrop-blur-sm transition-all duration-300" 
+                />
+              </div>
+            )}
+            
+            <div className="relative">
+              <input 
+                type="email" 
+                name='email' 
+                value={data.email} 
+                onChange={onChangeHandler} 
+                placeholder="Your email" 
+                className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/70 focus:outline-none focus:ring-1 focus:ring-white/50 focus:border-transparent backdrop-blur-sm transition-all duration-300" 
+              />
+            </div>
+            
+            <div className="relative">
+              <input 
+                type="password" 
+                name='password' 
+                value={data.password} 
+                onChange={onChangeHandler} 
+                placeholder="Password" 
+                className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/70 focus:outline-none focus:ring-1 focus:ring-white/50 focus:border-transparent backdrop-blur-sm transition-all duration-300" 
+              />
+            </div>
+            
+            <button 
+              type="submit" 
+              className="w-full bg-gradient-to-r from-[#2c1b15] to-[#4b2e28] text-white font-semibold rounded-xl py-3 mt-4 hover:shadow-[0_0_30px_5px_rgba(255,214,165,0.1)] transition-all duration-300 transform backdrop-blur-sm border border-white/20"
+            >
+              {currState === 'signup' ? 'Create account' : 'Login'}
+            </button>
+            
+            <div className="flex items-center gap-3 mt-4 p-3 bg-white/5 rounded-lg backdrop-blur-sm border border-white/10">
+              <input type="checkbox" required className="accent-[#996211] w-4 h-4" />
+              <span className="text-xs text-white/80">By continuing, I agree to the terms of use & privacy policy.</span>
+            </div>
+            
+            <div className="text-center mt-4 text-sm">
+              {currState === 'signup' ? (
+                <p className="text-white/80">
+                  Already have an account?{' '}
+                  <span
+                    className="text-white font-semibold cursor-pointer hover:underline transition-all duration-300"
+                    onClick={() => setCurrState('login')}
+                  >
+                    Login here
+                  </span>
+                </p>
+              ) : (
+                <p className="text-white/80">
+                  Create a new account?{' '}
+                  <span
+                    className="text-white font-semibold cursor-pointer hover:underline transition-all duration-300"
+                    onClick={() => setCurrState('signup')}
+                  >
+                    Signup here
+                  </span>
+                </p>
+              )}
+            </div>
+          </div>
         </div>
-        <div className="text-center mt-2 text-sm">
-          {currState === 'signup' ? (
-            <p>
-              Already have an account?{' '}
-              <span
-                className="text-[tomato] font-semibold cursor-pointer hover:underline"
-                onClick={() => setCurrState('login')}
-              >
-                Login here
-              </span>
-            </p>
-          ) : (
-            <p>
-              Create a new account?{' '}
-              <span
-                className="text-[tomato] font-semibold cursor-pointer hover:underline"
-                onClick={() => setCurrState('signup')}
-              >
-                Signup here
-              </span>
-            </p>
-          )}
-        </div>
-      </div>
+      </form>
     </div>
-  </form>
-</div>
-
   )
 }
 

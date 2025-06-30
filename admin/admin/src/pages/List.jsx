@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../index.css';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { Trash2 } from 'lucide-react';
 
 const List = () => {
   const url = 'http://localhost:8000';
@@ -33,9 +34,11 @@ const List = () => {
   return (
     <div className="px-6 mt-[120px] w-[70%] ml-[38px] mr-[30px] rounded-2xl z-20 bg-white shadow-[0_10px_30px_rgba(62,39,35,0.1)] overflow-y-auto max-h-[82.5vh] scrollbar-hide">
       {/* Heading */}
-      <p className="text-2xl font-semibold mb-8 mt-8 w-fit text-[#3E2723]">
-      All Foods List
-      </p>
+      <div className="flex items-center mb-8 mt-8 px-4">
+        <div className="flex-1 h-[2px] bg-[#3E2723] opacity-30"></div>
+        <p className="text-2xl font-semibold text-[#3E2723] mx-6 whitespace-nowrap">All Foods List</p>
+        <div className="flex-1 h-[2px] bg-[#3E2723] opacity-30"></div>
+      </div>
 
       {/* Food Items Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pb-6">
@@ -58,7 +61,7 @@ const List = () => {
             </div>
 
             {/* Name */}
-            <h3 className="text-lg text-[#f4eadb] bg-[#3E2723] mb-2 truncate px-4 py-1 w-fit rounded-xl shadow-sm">
+            <h3 className="text-lg text-[#f4eadb] bg-[#3E2723] mb-2 truncate px-4 py-1 w-fit rounded-md shadow-sm">
               {food.name}
             </h3>
 
@@ -76,9 +79,9 @@ const List = () => {
             <div className="flex justify-end">
               <button
                 onClick={() => removeItem(food._id)}
-                className="px-3 py-1 text-sm font-semibold text-red-600 border border-red-300 rounded-full hover:bg-red-50 transition"
+                className="px-3 py-1 text-sm font-semibold text-gray-600 rounded-full hover:text-red-600 transition"
               >
-                Delete
+                < Trash2/>
               </button>
             </div>
           </div>

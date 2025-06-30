@@ -3,7 +3,7 @@ import { userModel } from "../models/user.model.js";
 import Razorpay from "razorpay";
 
 const placeorder = async (req, res) => {
-  try {
+  try { // Debug log
     const userId = req.user._id;
     const { items, amount, address, payment, razorpay_payment_id, razorpay_order_id, razorpay_signature } = req.body;
 

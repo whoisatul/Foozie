@@ -2,10 +2,11 @@ import React from 'react'
 import { StoreContext } from '../context/StoreContext'
 import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
+import {Trash2} from 'lucide-react'
 
 const Cart = () => {
   
-  const {cartItems,food_list,removeFromCart,getTotal} = useContext(StoreContext);
+  const {cartItems,food_list,removeFromCart,getTotal,getTotalCartItems} = useContext(StoreContext);
   const navigate = useNavigate();
 
    return (<>
@@ -31,7 +32,7 @@ const Cart = () => {
               <p>${item.price}</p>
               <p>{cartItems[item._id]}</p>
               <p>${item.price * cartItems[item._id]}</p>
-              <button className="text-red-500 mr-[130px] hover:text-red-700 font-bold" onClick={()=>removeFromCart(item._id)}>-</button>
+              <button className="text-gray-600 mr-[130px] hover:text-red-700 font-bold" onClick={()=>removeFromCart(item._id)}><Trash2 /></button>
             </div>
           )
         }
@@ -54,7 +55,8 @@ const Cart = () => {
         </div>
 
         {/* Totals */}
-        <div className="bg-gray-50 p-6 rounded-md shadow-sm w-full max-w-sm ml-auto">
+        {getTotalCartItems()>0 && (
+          <div className="bg-gray-50 p-6 rounded-md shadow-sm w-full max-w-sm ml-auto">
           <h2 className="text-lg font-bold mb-4">Cart Totals</h2>
           <div className="flex justify-between mb-2">
             <p>Subtotal</p>
@@ -72,6 +74,7 @@ const Cart = () => {
             PROCEED TO CHECKOUT
           </button>
         </div>
+        )}
       </div>
     </div></>
   )

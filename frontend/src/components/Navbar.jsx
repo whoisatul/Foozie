@@ -6,7 +6,6 @@ import { StoreContext } from '../context/StoreContext';
 import { assets } from '../assets/assets';
 
 const Navbar = ({ setShowLogin, cartMode }) => {
-  const [menu, setmenu] = useState('home');
 
   const navigate = useNavigate();
   
@@ -21,19 +20,33 @@ const Navbar = ({ setShowLogin, cartMode }) => {
     
   // Original navbar for all other pages
   return (
-    <div className={`flex justify-between items-center px-5 mt-6 text-base absolute top-0 left-0 w-full z-50 bg-transparent ${cartMode ? 'text-black' : 'text-white'}`}>
+    <div className={`flex justify-between items-center px-5 mt-8 text-base absolute top-0 left-0 w-full z-50 bg-transparent ${cartMode ? 'text-[#3e2327]' : ' text-white'}`}>
       <div className="flex items-center h-full">
-        <NavLink to='/'><div className={`w-25 h-15 bg-[url('/logo.svg')] bg-cover bg-center z-50 `}>
-          </div></NavLink>
+      <NavLink to='/'>
+  <div className="relative w-24 h-12  rounded-full overflow-hidden z-50 flex items-center justify-center ">
+    {cartMode && (<div className="absolute inset-0 bg-[#2a1a1c] border border-[#2a1a1c] rounded-full z-0" /> )}
+    {/* Logo as image (won't be blurred) */}
+    <img
+      src="/logo.svg"
+      alt="logo"
+      className="relative z-10 w-22 h-13 object-contain"
+    />
+    
+  </div>
+</NavLink>
+
+
       </div>
       <div className='navitems'>
-        <ul className={`flex gap-20 items-center cursor-pointer ml-[100px] ${cartMode ? 'text-black' : {}}`} style={!cartMode ? { color: '#FAF3E0' } : {}}>
-          <NavLink to="/" className={`transition-transform duration-200 hover:-translate-y-[2px] ${menu === 'home' ? 'active' : ''}`} onClick={() => setmenu('home')}>home</NavLink>
-          <NavLink to='/menu' className={`transition-transform duration-200 hover:-translate-y-[2px] ${menu === 'menu' ? 'active' : ''}`} onClick={() => setmenu('menu')}>menu</NavLink>
-          <NavLink to='/App' className={`transition-transform duration-200 hover:-translate-y-[2px] ${menu === 'App' ? 'active' : ''}`} onClick={() => setmenu('App')}>App</NavLink>
-          <NavLink to='/contactus' className={`transition-transform duration-200 hover:-translate-y-[2px] ${menu === 'contact us' ? 'active' : ''}`} onClick={() => setmenu('contact us')}>contact us</NavLink>
-        </ul>
-      </div>
+  <ul
+    className={`flex gap-20 items-center cursor-pointer ml-[100px] ${cartMode ? 'text-[#2a1a1c]' : 'text-[#FAF3E0]'}`}>
+    <NavLink to="/" className={({ isActive }) =>`transition-all duration-150 hover:-translate-y-[2px] pb-1 ${isActive ? cartMode ? 'border-b-2 border-[#2a1a1c]' : 'border-b-2 border-[#F3E5AB]': ''}`} >home</NavLink>
+    <NavLink to="/menu" className={({ isActive }) =>`transition-all duration-150 hover:-translate-y-[2px] pb-1 ${isActive ? cartMode ? 'border-b-2 border-[#2a1a1c]' : 'border-b-2 border-[#F3E5AB]': ''}`} >menu</NavLink>
+    <NavLink to="/app" className={({ isActive }) =>`transition-all duration-150 hover:-translate-y-[2px] pb-1 ${isActive ? cartMode ? 'border-b-2 border-[#2a1a1c]' : 'border-b-2 border-[#F3E5AB]': ''}`}  > App </NavLink>
+    <NavLink to="/contactus" className={({ isActive }) =>`transition-all duration-150 hover:-translate-y-[2px] pb-1 ${isActive ? cartMode ? 'border-b-2 border-[#2a1a1c]' : 'border-b-2 border-[#F3E5AB]': ''}`} > contact us </NavLink> 
+    </ul> 
+    </div>
+
       <div className="flex items-center gap-4">
         <Search className={`w-5 h-5 ${cartMode ? 'text-black' : 'text-white'}`} />
         <NavLink to='/cart' className="relative">
@@ -47,9 +60,9 @@ const Navbar = ({ setShowLogin, cartMode }) => {
         {!accesstoken ? (
           <button
           onClick={() => setShowLogin(true)}
-          className={`relative group z-10 flex items-center justify-center bg-transparent border border-[#F3E5AB] text-base px-[20px] py-[6px] rounded-full cursor-pointer overflow-hidden transition duration-300 ease-in-out ${cartMode ? 'text-black' : 'text-gray-200'} hover:text-[#0d0e0c] `}>
+          className={`relative group z-10 flex items-center justify-center bg-transparent text-base px-[18px] py-[6px] rounded-full cursor-pointer overflow-hidden transition duration-300 ease-in-out ${cartMode ? 'text-[#0d0e0c] border border-[#0d0e0c] hover:text-[#F3E5AB]' : 'text-gray-200 border border-[#F3E5AB] hover:text-[#0d0e0c]'}  `}>
           <span className="z-10">sign in</span>
-          <span className=" absolute inset-0 m-auto w-[20em] h-[20em] -left-[5em] rounded-full z-0 transition-shadow duration-500 ease-out group-hover:shadow-[inset_0_0_0_10em_#F3E5AB]"></span>
+          <span className={ `absolute inset-0 m-auto w-[20em] h-[20em] -left-[5em] rounded-full z-0 transition-shadow duration-500 ease-out ${cartMode ? 'group-hover:shadow-[inset_0_0_0_10em_#2a1a1c]' : 'group-hover:shadow-[inset_0_0_0_10em_#F3E5AB]'} `}></span>
         </button>
         
         

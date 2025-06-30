@@ -23,17 +23,17 @@ const Statussetter = ({ currentStatus, onChange }) => {
           <div className="flex justify-between items-center w-full">
             <Ellipsis
               size={18}
-              className="text-[#7f5539] cursor-pointer hover:scale-110 hover:font-semibold active:text-yellow-500 transition duration-300"
+              className="text-[#7f5539] cursor-pointer active:scale-110 hover:font-semibold hover:text-yellow-500 transition duration-300"
               onClick={() => onChange('Food Processing')}
             />
             <Truck
               size={18}
-              className="text-[#7f5539] cursor-pointer hover:scale-110 hover:font-semibold active:text-blue-700 transition duration-300"
+              className="text-[#7f5539] cursor-pointer active:scale-110 hover:font-semibold hover:text-blue-700 transition duration-300"
               onClick={() => onChange('Out for Delivery')}
             />
             <PackageCheck
               size={18}
-              className="text-[#7f5539] cursor-pointer hover:scale-110 hover:font-semibold active:text-green-500 transition duration-300]"
+              className="text-[#7f5539] cursor-pointer active:scale-110 hover:font-semibold hover:text-green-600 transition duration-300]"
               onClick={() => onChange('Delivered')}
             />
           </div>

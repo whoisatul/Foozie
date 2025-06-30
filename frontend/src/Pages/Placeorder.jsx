@@ -5,7 +5,7 @@ import axios from "axios"
 import Orderdone from './Orderdone'
 
 const PlaceOrder = () => {
-  const { getTotal, accesstoken, cartItems } = useContext(StoreContext);
+  const { getTotal, accesstoken, cartItems, food_list } = useContext(StoreContext);
   const url = "http://localhost:8000";
   const navigate = useNavigate();
   const [orderPlaced, setOrderPlaced] = useState(false);
@@ -28,6 +28,15 @@ const PlaceOrder = () => {
   const handleProceedToPayment = async (e) => {
     e.preventDefault();
     const totalAmount = getTotal() + 2;
+    // Transform cartItems to new format
+    const items = Object.entries(cartItems)
+      .filter(([foodId, quantity]) => quantity > 0)
+      .map(([foodId, quantity]) => {
+        const food = food_list.find(f => f._id === foodId);
+        return {
+          [foodId]: { name: food?.name || foodId, quantity }
+        };
+      });
     const options = {
       key: import.meta.env.VITE_RAZORPAY_KEY,
       amount: totalAmount * 100,
@@ -37,7 +46,7 @@ const PlaceOrder = () => {
       handler: async function (response) {
         try {
           await axios.post(`${url}/api/v1/order/checkout`, {
-            items: cartItems,
+            items: items,
             amount: totalAmount,
             address: form,
             payment: true,

@@ -7,7 +7,7 @@ const Menu = () => {
 
   const [category, setCategory] = useState("All");
   return (
-    <div>
+    <div className='mt-[100px]'>
        <Suggestion category={category} setCategory={setCategory}/>
        <Fooddisplay category={category}/>
        <Footer />

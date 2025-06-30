@@ -49,19 +49,28 @@ const Order = () => {
   }, []);
 
   return (
-    <div className="px-6 mt-[120px] w-[70%] ml-[38px] rounded-2xl h-[82.5vh] mr-[30px] z-20 shadow-[0_0_1px_rgba(62,39,35,0.15),0_6px_12px_rgba(62,39,35,0.25)] ">
-      <h2 className="text-2xl font-semibold text-[#3E2723] mb-8 mt-8 ml-2">Orders</h2>
+    <div className="px-6 mt-[120px] w-[70%] ml-[38px] rounded-2xl h-[82.5vh] mr-[30px] z-20 shadow-[0_0_1px_rgba(62,39,35,0.15),0_6px_12px_rgba(62,39,35,0.25)] overflow-y-auto scrollbar-hide">
+      <div className="flex items-center mb-8 mt-8 px-4">
+        <div className="flex-1 h-[2px] bg-[#3E2723] opacity-30"></div>
+        <h2 className="text-2xl font-semibold text-[#3E2723] mx-6 whitespace-nowrap">Orders</h2>
+        <div className="flex-1 h-[2px] bg-[#3E2723] opacity-30"></div>
+      </div>
       {orders.map((order, index) => {
-        const itemSummary = Object.entries(order.items || {})
-          .map(([name, quantity]) => `${name} x ${quantity}`)
+        // New structure: items is an array of objects, each with foodId: { name, quantity }
+        const itemsArray = Array.isArray(order.items) ? order.items : [];
+        const itemSummary = itemsArray
+          .map(itemObj => {
+            const [foodId, foodData] = Object.entries(itemObj)[0];
+            return `${foodData.name} x ${foodData.quantity}`;
+          })
           .join(', ');
 
-        const itemCount = Object.keys(order.items || {}).length;
+        const itemCount = itemsArray.length;
 
         return (
           <div
             key={index}
-            className="border border-[#7f5539] rounded-xl p-4 mb-6 flex justify-between items-start w-3xl hover:shadow-[0_0_6px_1px_rgba(62,39,35,0.35)] transition-all duration-300"
+            className="border border-[#7f5539] rounded-xl p-4 mb-6 flex justify-between items-start w-3xl hover:shadow-[0_0_6px_1px_rgba(62,39,35,0.35)] transition-all duration-300 overflow-hidden"
           >
             {/* Left Section */}
             <div className="flex gap-4">

@@ -52,7 +52,7 @@ const Navbar = ({ setShowLogin, cartMode }) => {
         <NavLink to='/cart' className="relative">
           <ShoppingCart className={`w-5 h-5 ${cartMode ? 'text-black' : 'text-white'}`} />
           {getTotalCartItems() > 0 && (
-            <span className="absolute -top-2 -right-2 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center" style={{backgroundColor:3E2723}}>
+            <span className={`absolute -top-2 -right-2 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center ${cartMode? 'bg-[#3e2327]' : ''}`} >
               {getTotalCartItems()}
             </span>
           )}

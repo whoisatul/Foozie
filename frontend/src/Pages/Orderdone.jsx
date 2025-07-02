@@ -16,15 +16,14 @@ const Orderdone = () => {
         <h2 className="text-2xl font-bold text-white mb-2 animate-fade-in-up">Thank you for your order!</h2>
         <p className="text-white/80 mb-6 text-center animate-fade-in-up delay-150">Your order was placed successfully. We appreciate your business and hope you enjoy your meal!</p>
         {/* Order summary placeholder */}
-        <div className="w-full mb-6 animate-fade-in-up delay-300">
+        <div className="w-full mb-6 mt-5 animate-fade-in-up delay-300">
           <div className="bg-white/10 border border-white/10 rounded-lg p-4 text-white/80 text-sm text-center">
             <span className="font-semibold text-white">Order #123456</span> <br />
             Estimated delivery: <span className="font-semibold text-white">30-40 min</span>
           </div>
         </div>
         {/* Button */}
-        <a href="/" className="inline-block px-8 py-3 rounded-full bg-gradient-to-r from-[#3e2723] to-[#5d4037] text-white font-semibold shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300 animate-fade-in-up delay-500">Go to Home</a>
-      </div>
+       </div>
       {/* Animations */}
       <style>{`
         @keyframes pop-in {

@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import Suggestion from './suggestion'
+import Suggestion from './Suggestion'
 import Fooddisplay from '../components/foodDisplay'
 import Footer from '../components/Footer'
 

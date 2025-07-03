@@ -3,10 +3,11 @@ import { StoreContext } from '../context/StoreContext'
 import  Processbar  from '../components/Processbar'
 import { useNavigate } from 'react-router-dom';
 import {Trash2} from 'lucide-react'
+import { FiPlus, FiMinus } from 'react-icons/fi'
 
 const Cart = () => {
   
-  const {cartItems,food_list,removeFromCart,getTotal,getTotalCartItems} = useContext(StoreContext);
+  const {cartItems,food_list,removeFromCart,addToCart,getTotal,getTotalCartItems,deleteFromCart} = useContext(StoreContext);
   const navigate = useNavigate();
 
    return (
@@ -30,9 +31,15 @@ const Cart = () => {
                     <p className="text-gray-500 text-sm line-clamp-2 mb-1 max-w-xs">{item.description}</p>
                     <p className="text-[12px] text-gray-400 mb-2">Sold by: Foozie</p>
                     <div className="flex items-center gap-4 mt-2">
-                      <div className="flex items-center gap-1">
-                        <span className="text-gray-600 text-sm">Qty:</span>
-                        <span>{cartItems[item._id]}</span>
+                      {/* Quantity Counter (reused from Fooditem.jsx) */}
+                      <div className="flex items-center bg-white/80 backdrop-blur-md rounded-full shadow px-2 py-1 gap-2">
+                        <button onClick={() => removeFromCart(item._id)} className="hover:bg-red-100 p-1 rounded-full transition-all duration-200">
+                          <FiMinus size={18} className="text-red-500" />
+                        </button>
+                        <span className="font-semibold text-[#432b1a]">{cartItems[item._id]}</span>
+                        <button onClick={() => addToCart(item._id)} className="hover:bg-green-100 p-1 rounded-full transition-all duration-200">
+                          <FiPlus size={18} className="text-green-600" />
+                        </button>
                       </div>
                       <p className="text-lg font-semibold text-[#2a1a1c]">₹{item.price}</p>
                     </div>
@@ -42,7 +49,7 @@ const Cart = () => {
                   <div className="flex flex-col justify-between items-end">
                     <button
                       className="text-gray-500 hover:text-red-500 font-bold"
-                      onClick={() => removeFromCart(item._id)}
+                      onClick={() => deleteFromCart(item._id)}
                     >
                       <Trash2 />
                     </button>
@@ -85,7 +92,7 @@ const Cart = () => {
                 </div>
                 <div className="flex justify-between font-semibold text-lg mb-4">
                   <p>Total</p>
-                  <p>₹{getTotal()+2}</p>
+                  <p>₹{getTotal()+49}</p>
                 </div>
                 <button className="bg-[#432b1a] text-white font-semibold w-full py-2 rounded hover:bg-[#6e5a4b] transition-all" onClick={()=> navigate('/order')}>
                   PROCEED TO CHECKOUT

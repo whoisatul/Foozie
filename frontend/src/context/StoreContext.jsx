@@ -64,6 +64,30 @@ const StoreContextProvider = (props) => {
           }
     }
 
+    // delete item
+    const deleteFromCart = async (itemId) => {
+      setCartItems((prev) => {
+        const updated = { ...prev };
+        delete updated[itemId];
+        return updated;
+      });
+      // Optionally, make an API call to remove the item completely from the backend cart
+      const token = localStorage.getItem("accesstoken");
+      try {
+        await axios.post(
+          `${url}/api/v1/cart/delete`,
+          { itemId },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          }
+        );
+      } catch (err) {
+        console.error("Delete from cart error:", err);
+      }
+    };
+     
     const getTotal = () => {
         let totalAmount = 0;
         for (const item in cartItems)
@@ -116,7 +140,7 @@ const StoreContextProvider = (props) => {
     const contextValue = {
     food_list,
     cartItems, setCartItems, addToCart,
-    removeFromCart, getTotal, getTotalCartItems,accesstoken,refreshtoken,setaccesstoken,setrefreshtoken,fetchfoodlist
+    removeFromCart, getTotal, getTotalCartItems,accesstoken,refreshtoken,setaccesstoken,setrefreshtoken,fetchfoodlist,deleteFromCart
  }
  return(
     <StoreContext.Provider value = {contextValue}>

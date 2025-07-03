@@ -4,7 +4,7 @@ import { assets } from '../assets/assets';
 const Download = () => {
   return (
     <div className='flex flex-row justify-between mt-[150px] mb-[50px]'>
-      <div className='ml-[190px] mt-[100px] '> 
+      <div className='ml-[190px] mt-[100px]'> 
     <h1 className='text-5xl font-medium '> Download Our <span className='text-[#6f4e37]'>Foozie</span> App</h1>
     <p className='text-[1.32rem] text-[#38281c]/60 mt-[5px]'>
     Experience seamless online ordering

@@ -17,13 +17,13 @@ app.use(cookieParser())
 //routes import
 import foodrouter from "./routes/foodRoute.routes.js"
 import userrouter from "./routes/userRoute.route.js"
-import cardrouter from "./routes/cartRoute.route.js"
+import cartrouter from "./routes/cartRoute.route.js"
 import orderrouter from "./routes/orderRoute.route.js"
 
 //routes declaration
 app.use("/api/v1/food",foodrouter)
 app.use("/api/v1/user",userrouter)
-app.use("/api/v1/cart",cardrouter)
+app.use("/api/v1/cart",cartrouter)
 app.use("/api/v1/order",orderrouter)
 
 // http://localhost:8000/api/v1/users/register

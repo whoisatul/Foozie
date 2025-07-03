@@ -3,6 +3,7 @@ import { StoreContext } from '../context/StoreContext';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios"
 import Orderdone from './Orderdone'
+import Myorders from './Myorders'
 import Processbar from '../components/Processbar';
 
 const PlaceOrder = () => {
@@ -63,7 +64,7 @@ const PlaceOrder = () => {
           setOrderPlaced(true);
           setTimeout(() => {
             navigate('/myorder');
-          }, 1500);
+          }, 3000);
         } catch (err) {
           alert("Order creation failed after payment!");
           console.error(err);
@@ -125,7 +126,7 @@ const PlaceOrder = () => {
                 <span>Total</span>
                 <span>₹{getTotal ? getTotal() + 49 : 49}</span>
               </div>
-              {orderPlaced && <Orderdone />}
+              {orderPlaced && <><Myorders/><Orderdone /></>}
               <button className="bg-[#432b1a] text-white font-semibold w-full py-3 rounded hover:bg-[#6e5a4b] transition-all" onClick={handleProceedToPayment}>
                 PROCEED TO PAYMENT
               </button>

@@ -10,7 +10,7 @@ const Signup = ({ setShowLogin }) => {
 
   const{setaccesstoken} = useContext(StoreContext)
 
-  const [currState, setCurrState] = useState('')
+  const [currState, setCurrState] = useState('login')
   const [data,setData] = useState({
     name:"",
     email:"",

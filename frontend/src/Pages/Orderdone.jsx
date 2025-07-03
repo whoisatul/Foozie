@@ -13,13 +13,13 @@ const Orderdone = () => {
           </svg>
         </div>
         {/* Thank you message */}
-        <h2 className="text-2xl font-bold text-white mb-2 animate-fade-in-up">Thank you for your order!</h2>
-        <p className="text-white/80 mb-6 text-center animate-fade-in-up delay-150">Your order was placed successfully. We appreciate your business and hope you enjoy your meal!</p>
+        <h2 className="text-2xl font-bold text-[#6f4e37] mb-2 animate-fade-in-up">Thank you for your order!</h2>
+        <p className="text-[#6f4e37]/80 mb-6 text-center animate-fade-in-up delay-150">Your order was placed successfully. We appreciate your business and hope you enjoy your meal!</p>
         {/* Order summary placeholder */}
         <div className="w-full mb-6 mt-5 animate-fade-in-up delay-300">
-          <div className="bg-white/10 border border-white/10 rounded-lg p-4 text-white/80 text-sm text-center">
-            <span className="font-semibold text-white">Order #123456</span> <br />
-            Estimated delivery: <span className="font-semibold text-white">30-40 min</span>
+          <div className="bg-white/10 border border-white/10 rounded-lg p-4 text-[#6f4e37] text-sm text-center">
+            <span className="font-semibold text-[#6f4e37]">Order #123456</span> <br />
+            Estimated delivery: <span className="font-semibold text-[#6f4e37]">30-40 min</span>
           </div>
         </div>
         {/* Button */}

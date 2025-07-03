@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import '../index.css';
-import { Search, ShoppingCart } from 'lucide-react';
+import { Search, ShoppingCart,UserRound, ShoppingBag,LogOut } from 'lucide-react';
 import { NavLink,useNavigate } from 'react-router-dom';
 import { StoreContext } from '../context/StoreContext';
 import { assets } from '../assets/assets';
@@ -48,11 +48,11 @@ const Navbar = ({ setShowLogin, cartMode }) => {
     </div>
 
       <div className="flex items-center gap-4">
-        <Search className={`w-5 h-5 ${cartMode ? 'text-black' : 'text-white'}`} />
+        <Search className={`w-5 h-5 ${cartMode ? 'text-black' : 'text-[#FAF3E0]'}`} />
         <NavLink to='/cart' className="relative">
-          <ShoppingCart className={`w-5 h-5 ${cartMode ? 'text-black' : 'text-white'}`} />
+          <ShoppingCart className={`w-5 h-5 ${cartMode ? 'text-black' : 'text-[#FAF3E0]'}`} />
           {getTotalCartItems() > 0 && (
-            <span className={`absolute -top-2 -right-2 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center ${cartMode? 'bg-[#3e2327]' : ''}`} >
+            <span className={`absolute -top-2 -right-2 text-[#FAF3E0] text-xs rounded-full w-4 h-4 flex items-center justify-center ${cartMode? 'bg-[#3e2327]' : ''}`} >
               {getTotalCartItems()}
             </span>
           )}
@@ -68,19 +68,15 @@ const Navbar = ({ setShowLogin, cartMode }) => {
         
         ) : (
           <div className="relative group">
-            <img
-              src={assets.profile_icon}
-              alt="Profile"
-              className="w-9 h-9 rounded-full border-2 border-[#F3E5AB] bg-white p-1 cursor-pointer transition-transform duration-200 group-hover:scale-100"
-            />
-            <ul className="absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible pointer-events-auto transition-all duration-200 z-50">
-              <NavLink to='/myorder' className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 rounded-lg cursor-pointer">
-                <img src={assets.bag_icon} className="w-5 h-5" alt="Orders" />
+           <UserRound className={ `w-9 h-9 p-1 border-[1px] rounded-4xl cursor-pointer transition-transform duration-200 group-hover:scale-100 ${ cartMode? 'text-[#2a1a1c] border-[#2a1a1c]' : 'text-[#FAF3E0] border-[#FAF3E0]' }` } />
+            <ul className="absolute right-0 mt-2 w-28 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible pointer-events-auto transition-all duration-200 z-50">
+              <NavLink to='/myorder' className="flex items-center gap-2 px-4 py-2 hover:bg-gray-200 rounded-lg cursor-pointer">
+                <ShoppingBag className='w-5 h-5 text-[#39210a]'/>
                 <p className='text-black'>Orders</p>
               </NavLink>
               <hr className="my-1" />
               <li className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 rounded-lg cursor-pointer">
-                <img src={assets.logout_icon} className="w-5 h-5" alt="Logout" />
+                <LogOut className='w-5 h-5 text-[#39210a]'/>
                 <p className='text-black' onClick={logout} >Logout</p>
               </li>
             </ul>

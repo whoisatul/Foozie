@@ -75,7 +75,7 @@ const Navbar = ({ setShowLogin, cartMode }) => {
                 <p className='text-black'>Orders</p>
               </NavLink>
               <hr className="my-1" />
-              <li className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 rounded-lg cursor-pointer">
+              <li className="flex items-center gap-2 px-4 py-2 hover:bg-gray-200 rounded-lg cursor-pointer">
                 <LogOut className='w-5 h-5 text-[#39210a]'/>
                 <p className='text-black' onClick={logout} >Logout</p>
               </li>

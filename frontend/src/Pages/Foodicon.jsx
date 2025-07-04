@@ -1,34 +1,39 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react';
 
-const Foodicon = ({prompt}) => {
+const Foodicon = ({ prompt }) => {
+  const [category, setCategory] = useState();
 
-  const[category,setCategory] = useState()
   return (
-    <div className="ml-[100px]">
-      <div className="flex flex-row flex-wrap gap-[100px] mx-[10px] ">
+    <div className="px-6">
+      <div className="flex flex-wrap justify-center gap-x-[80px] gap-y-[40px]">
         {prompt.map((item, index) => (
           <div
-            key={index}
-            onClick={() =>
-              setCategory(prev => (prev === item.name ? 'All' : item.name))
-            }
-            className="flex flex-col items-center cursor-pointer "
-          >
-            <div className= ' flex flex-col items-center text-[#2a1a1c]/50 hover:text-[#2a1a1c]/90 transition-all duration-200'><div
-              className={`menu-img ${category === item.name ? 'active' : ''}`}
-            >
+          key={index}
+          onClick={() =>
+            setCategory(prev => (prev === item.name ? 'All' : item.name))
+          }
+          className="flex flex-col items-center justify-center w-[100px] min-h-[130px] cursor-pointer"
+        >
+          <div className="w-[60px] h-[60px] flex items-center justify-center">
+            <div className="w-full h-full flex items-center justify-center">
               {item.element}
             </div>
-            <p className="mt-[10px] mb-[20px] text-xl  ">
-              {item.name}
-            </p>
           </div>
-          </div>
+        
+          <p
+            className={`mt-2 text-center text-sm font-medium ${
+              category === item.name
+                ? 'text-[#2a1a1c]'
+                : 'text-[#2a1a1c]/50 hover:text-[#2a1a1c]/90'
+            } transition-colors duration-200`}
+          >
+            {item.name}
+          </p>
+        </div>
         ))}
       </div>
     </div>
-  )
-  
-}
+  );
+};
 
-export default Foodicon
+export default Foodicon;

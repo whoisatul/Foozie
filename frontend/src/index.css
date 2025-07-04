@@ -39,10 +39,126 @@ a{
     }
 }
 
+.menu-img {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .menu-img.active {
-    background-color: #f3e5ab;
-  box-shadow: 0 0 15px 8px rgba(255, 215, 150, 0.6);
-  color: #2a1a1c;
-  transition: all;
-  animation-duration: 300ms;
+  transform: scale(1.5);
+  transition: all 0.3s ease;
+}
+
+
+@keyframes shine {
+    0% {
+      background-position: -200%;
+    }
+    100% {
+      background-position: 200%;
+    }
+  }
+  
+ .fav{
+    animation: shine 5s linear infinite;
+    background: linear-gradient(90deg, #7a5e3a, #d4af7f, #a9894a, #d4af7f, #7a5e3a);
+    background-size: 200% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.2);
+ }
+
+ @keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.animate-flicker {
+  animation: flicker 0.8s infinite ease-in-out;
+}
+
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 2.5s infinite;
+}
+
+@keyframes pizza-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.animate-pizza-bounce {
+  animation: pizza-bounce 2.8s ease-in-out infinite;
+}
+
+@keyframes dessert-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.animate-dessert-bounce {
+  animation: dessert-bounce 2.6s ease-in-out infinite;
+}
+
+@keyframes beverage-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.animate-beverage-bounce {
+  animation: beverage-bounce 2.8s ease-in-out infinite;
+}
+
+@keyframes steam-rise {
+  0% { opacity: 0; transform: translateY(4px); }
+  50% { opacity: 0.6; transform: translateY(-2px); }
+  100% { opacity: 0; transform: translateY(-6px); }
+}
+
+.animate-steam {
+  animation: steam-rise 2.5s ease-in-out infinite;
+}
+
+@keyframes burger-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.animate-burger-bounce {
+  animation: burger-bounce 2.6s ease-in-out infinite;
+}
+
+@keyframes drumstick-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+.animate-drumstick-bounce {
+  animation: drumstick-bounce 2.8s ease-in-out infinite;
+}
+
+@keyframes leaf-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+.animate-leaf-bounce {
+  animation: leaf-bounce 3s ease-in-out infinite;
+}
+
+@keyframes salad-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+.animate-salad-bounce {
+  animation: salad-bounce 2.8s ease-in-out infinite;
 }

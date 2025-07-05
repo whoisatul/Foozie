@@ -3,11 +3,13 @@ import { FiPlus, FiMinus, FiStar } from 'react-icons/fi'
 import { StoreContext } from '../context/StoreContext'
 import { useContext } from 'react'
 
-const Fooditem = ({id,name,price,description,image}) => {
+const Fooditem = ({id,name,price,description,image, isHighlighted}) => {
   const { cartItems = {}, addToCart, removeFromCart } = useContext(StoreContext);
 
   return (
-    <div className="ml-[36px] my-5 w-[300px] rounded-2xl shadow-lg p-4 border border-[#d7aa81] backdrop-blur-md bg-white/60 transition-transform duration-300 hover:scale-105 hover:shadow-2xl relative overflow-hidden group">
+    <div className={`ml-[36px] my-5 w-[300px] rounded-2xl shadow-lg p-4 border border-[#d7aa81] backdrop-blur-md bg-white/60 transition-transform duration-300 hover:scale-105 hover:shadow-2xl relative overflow-hidden group ${
+      isHighlighted ? 'ring-4 ring-[#F3E5AB] ring-opacity-75 shadow-2xl scale-105' : ''
+    }`}>
       {/* Food Image with zoom on hover and plus icon */}
       <div className="relative overflow-hidden rounded-t-2xl mb-2 w-full h-40">
         <img src={image} alt={name} className="rounded-t-2xl w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />

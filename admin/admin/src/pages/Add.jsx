@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import '../index.css';
-import { assets } from '../assets/assets';
 import { Upload } from 'lucide-react';
-import Sidebar from '../components/Sidebar';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 

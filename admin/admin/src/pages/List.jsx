@@ -32,7 +32,7 @@ const List = () => {
   }, []);
 
   return (
-    <div className="px-6 mt-[120px] w-[70%] ml-[38px] mr-[30px] rounded-2xl z-20 bg-white shadow-[0_10px_30px_rgba(62,39,35,0.1)] overflow-y-auto max-h-[82.5vh] scrollbar-hide">
+    <div className="px-6 mt-[120px] w-[70%] ml-[38px] mr-[30px] rounded-2xl z-20 bg-white shadow-[0_0_1px_rgba(62,39,35,0.15),0_6px_12px_rgba(62,39,35,0.25)] overflow-y-auto max-h-[82.5vh] scrollbar-hide">
       {/* Heading */}
       <div className="flex items-center mb-8 mt-8 px-4">
         <div className="flex-1 h-[2px] bg-[#3E2723] opacity-30"></div>

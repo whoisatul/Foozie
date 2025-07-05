@@ -3,7 +3,7 @@ import React from 'react'
 import  {StoreContext}  from '../context/StoreContext';
 import Fooditem from './Fooditem';
 
-const Fooddisplay = ({ category }) => {
+const Fooddisplay = ({ category, highlightedFood }) => {
     const { food_list } = useContext(StoreContext); 
   
     return (
@@ -12,9 +12,20 @@ const Fooddisplay = ({ category }) => {
         <div className='grid grid-cols-4'>
             {food_list.map((item,indx)=>{
               if(category==='All' || category===item.category){
-                return <Fooditem key={indx} id={item._id} name={item.name} description={item.description} price={item.price} image={item.image}/>
+                return (
+                  <div key={indx} className={highlightedFood === item._id ? 'animate-pulse' : ''}>
+                    <Fooditem 
+                      id={item._id} 
+                      name={item.name} 
+                      description={item.description} 
+                      price={item.price} 
+                      image={item.image}
+                      isHighlighted={highlightedFood === item._id}
+                    />
+                  </div>
+                );
               }
-                
+              return null;
             })}
         </div>
     </div>

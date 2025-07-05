@@ -1,4 +1,6 @@
 import { foodModel } from "../models/food.model.js";
+import { userModel } from "../models/user.model.js";
+import { orderModel } from "../models/order.model.js";
 import fs from 'fs'
 import path from "path";
 import { uploadOnCloudinary } from "../utils/cloudinary.utils.js";
@@ -82,4 +84,32 @@ const removeitem = async (req, res) => {
     }
   };
 
-export{ addFood,listfood,removeitem }
+     // display details at admin page
+     const orders = async(req,res) => {
+     
+      try {
+        const totalorder = await orderModel.countDocuments();
+        const totaluser = await userModel.countDocuments();
+        const totalpendingorder = await orderModel.countDocuments({status:"Food Processing"})
+        const totalDelivered = await orderModel.aggregate([
+          {
+            $match: { status: "Delivered" }
+          },
+          {
+            $group: {
+              _id: null,
+              totalAmount: { $sum: "$amount" }
+            }
+          }
+        ]);
+        
+        const totalrevenue = totalDelivered[0]?.totalAmount || 0;
+        res.json({success:true,data:{totalorder,totaluser,totalpendingorder,totalrevenue}})
+      } catch (error) {
+        res.json({success:false,message: "data not fetched"})
+      }
+
+
+     }
+
+export{ addFood,listfood,removeitem,orders }

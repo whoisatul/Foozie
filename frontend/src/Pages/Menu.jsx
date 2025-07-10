@@ -1,7 +1,7 @@
 import React,{useState, useEffect} from 'react'
 import { useSearchParams } from 'react-router-dom'
 import Suggestion from './Suggestion'
-import Fooddisplay from '../components/foodDisplay'
+import Fooddisplay from '../components/Fooddisplay'
 import Footer from '../components/Footer'
 
 const Menu = () => {

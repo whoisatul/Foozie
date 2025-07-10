@@ -83,54 +83,58 @@ const Homesection = () => {
       </div>
       <div className="grid grid-rows-2 grid-cols-2 gap-8 w-4/5 ml-[143px] mt-[60px]">
   <div className="bg-[#f7eee7eb] border-[1px] border-[#d7aa81] rounded-xl shadow-md p-4">
-    <p className="text-sm text-[#3e2723] font-medium">
-    <div className="flex items-center gap-1">
-            {[...Array(4)].map((_, i) => (
-              <FiStar key={i} className="text-[#efc75a]" />
-            ))}
-            <FiStar className="text-gray-300" />
-          </div> <br />
-      "Absolutely love the food quality and packaging! Foozie never disappoints."
-    </p>
+    <div className="text-sm text-[#3e2723] font-medium flex flex-col">
+      <div className="flex items-center gap-1">
+        {[...Array(4)].map((_, i) => (
+          <FiStar key={i} className="text-[#efc75a]" />
+        ))}
+        <FiStar className="text-gray-300" />
+      </div>
+      <br />
+      <span>"Absolutely love the food quality and packaging! Foozie never disappoints."</span>
+    </div>
     <p className="text-xs text-[#6e4f3a] mt-2 text-right">– Anjali R.</p>
   </div>
 
   <div className="bg-[#f7eee7eb] border-[1px] border-[#d7aa81] rounded-xl shadow-md p-4">
-    <p className="text-sm text-[#3e2723] font-medium">
-    <div className="flex items-center gap-1">
-            {[...Array(4)].map((_, i) => (
-              <FiStar key={i} className="text-[#efc75a]" />
-            ))}
-            <FiStar className="text-gray-300" />
-          </div> <br />
-      "Delicious meals with timely delivery. Highly recommended!"
-    </p>
+    <div className="text-sm text-[#3e2723] font-medium flex flex-col">
+      <div className="flex items-center gap-1">
+        {[...Array(4)].map((_, i) => (
+          <FiStar key={i} className="text-[#efc75a]" />
+        ))}
+        <FiStar className="text-gray-300" />
+      </div>
+      <br />
+      <span>"Delicious meals with timely delivery. Highly recommended!"</span>
+    </div>
     <p className="text-xs text-[#6e4f3a] mt-2 text-right">– Rahul S.</p>
   </div>
 
   <div className="bg-[#f7eee7eb] border-[1px] border-[#d7aa81] rounded-xl shadow-md p-4">
-    <p className="text-sm text-[#3e2723] font-medium">
-    <div className="flex items-center gap-1">
-            {[...Array(3)].map((_, i) => (
-              <FiStar key={i} className="text-[#efc75a]" />
-            ))}
-            <FiStar className="text-gray-300" />
-            <FiStar className="text-gray-300" />
-          </div><br />
-      "Great variety and taste. Foozie is my go-to food app."
-    </p>
+    <div className="text-sm text-[#3e2723] font-medium flex flex-col">
+      <div className="flex items-center gap-1">
+        {[...Array(3)].map((_, i) => (
+          <FiStar key={i} className="text-[#efc75a]" />
+        ))}
+        <FiStar className="text-gray-300" />
+        <FiStar className="text-gray-300" />
+      </div>
+      <br />
+      <span>"Great variety and taste. Foozie is my go-to food app."</span>
+    </div>
     <p className="text-xs text-[#6e4f3a] mt-2 text-right">– Priya K.</p>
   </div>
 
   <div className="bg-[#f7eee7eb] border-[1px] border-[#d7aa81] rounded-xl shadow-md p-4">
-    <p className="text-sm text-[#3e2723] font-medium">
-    <div className="flex items-center gap-1">
-            {[...Array(5)].map((_, i) => (
-              <FiStar key={i} className="text-[#efc75a]" />
-            ))}
-          </div> <br />
-      "Nice UI and smooth experience ordering food. Keep it up!"
-    </p>
+    <div className="text-sm text-[#3e2723] font-medium flex flex-col">
+      <div className="flex items-center gap-1">
+        {[...Array(5)].map((_, i) => (
+          <FiStar key={i} className="text-[#efc75a]" />
+        ))}
+      </div>
+      <br />
+      <span>"Nice UI and smooth experience ordering food. Keep it up!"</span>
+    </div>
     <p className="text-xs text-[#6e4f3a] mt-2 text-right">– Aman T.</p>
   </div>
 </div>

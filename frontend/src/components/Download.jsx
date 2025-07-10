@@ -12,7 +12,7 @@ const Download = () => {
     </p>
     <div className='flex flex-row mt-[40px] gap-[30px]'><img src={assets.app_store} className='hover:scale-105 transition duration-300'/> <img src={assets.play_store} className='hover:scale-105 transition duration-300' /></div>
       </div>
-     <div className='mr-[90px]'> <img src={'/download.svg'} alt={Download} className='w-90 h-126'/></div>
+     <div className='mr-[90px]'> <img src={'/download.svg'} alt="Download" className='w-90 h-126'/></div>
     </div>
   );
 };

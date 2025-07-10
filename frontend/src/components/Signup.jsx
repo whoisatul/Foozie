@@ -1,12 +1,12 @@
 import React, { useState,useContext } from 'react'
 import { assets } from '../assets/assets'
+import API_BASE_URL from '../config';
 import { X } from 'lucide-react'
 import axios from 'axios';
 import { StoreContext } from '../context/StoreContext';
 
 const Signup = ({ setShowLogin }) => {
 
-  const url = "http://localhost:8000";
 
   const{setaccesstoken} = useContext(StoreContext)
 
@@ -26,7 +26,7 @@ const Signup = ({ setShowLogin }) => {
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
-    let newUrl = url;
+    let newUrl = API_BASE_URL;
     if (currState==="login") {
     newUrl += "/api/v1/user/login"
     }

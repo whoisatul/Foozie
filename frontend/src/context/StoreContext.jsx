@@ -12,7 +12,6 @@ const StoreContextProvider = (props) => {
     const[accesstoken,setaccesstoken] = useState("")
     const[refreshtoken,setrefreshtoken] = useState("")
     const[food_list,setfoodlist] = useState([])
-    const url = "http://localhost:8000";
     //add to cart
     const addToCart = async (itemId) => {
         // Update local cart state first
@@ -111,7 +110,7 @@ const StoreContextProvider = (props) => {
     const getcart = async(token) => {
 
 
-      const response = await axios.post(`${url}/api/v1/cart/getcart`, {},
+      const response = await axios.post(`${API_BASE_URL}/api/v1/cart/getcart`, {},
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -122,7 +121,7 @@ const StoreContextProvider = (props) => {
     }
 
     const fetchfoodlist = async () => {
-        const response = await axios.get(`${url}/api/v1/food/list`)
+        const response = await axios.get(`${API_BASE_URL}/api/v1/food/list`)
         setfoodlist(response.data.data)
     }
     

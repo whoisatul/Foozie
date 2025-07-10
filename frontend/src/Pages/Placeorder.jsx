@@ -5,10 +5,10 @@ import axios from "axios"
 import Orderdone from './Orderdone'
 import Myorders from './Myorders'
 import Processbar from '../components/Processbar';
+import API_BASE_URL from '../config';
 
 const PlaceOrder = () => {
   const { getTotal, accesstoken, cartItems, food_list } = useContext(StoreContext);
-  const url = "http://localhost:8000";
   const navigate = useNavigate();
   const [orderPlaced, setOrderPlaced] = useState(false);
   const [form, setForm] = useState({
@@ -47,7 +47,7 @@ const PlaceOrder = () => {
       description: "Food Delivery Order",
       handler: async function (response) {
         try {
-          await axios.post(`${url}/api/v1/order/checkout`, {
+          await axios.post(`${API_BASE_URL}/api/v1/order/checkout`, {
             items: items,
             amount: totalAmount,
             address: form,

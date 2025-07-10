@@ -1,5 +1,6 @@
 import React,{ useState,useContext,useEffect } from "react"
 import axios from "axios"
+import API_BASE_URL from '../config';
 import { StoreContext } from "../context/StoreContext"
 import { Package, Package2 } from 'lucide-react';
 
@@ -21,12 +22,11 @@ const statusSteps = ["Preparing", "Out for Delivery", "Food Delivered"];
 const Myorders = () => {
 
   const {accesstoken} = useContext(StoreContext) 
-  const url = "http://localhost:8000";
   const [data,setdata] = useState([])
   const [showItemsIdx, setShowItemsIdx] = useState(null);
 
   const fetchorder = async() => {
-     const response = await axios.post(`${url}/api/v1/order/myorder`, {} , {
+     const response = await axios.post(`${API_BASE_URL}/api/v1/order/myorder`, {} , {
         headers: {
           Authorization: `Bearer ${accesstoken}`
         }

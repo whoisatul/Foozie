@@ -41,4 +41,4 @@ The platform also includes **secure online payments via Razorpay** and a **separ
 
 ---
 
-## 📂 Project Structure
+Developed by **Hrikshesh Kumar** at **IIIT Vadodara** **
